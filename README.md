@@ -45,3 +45,17 @@ This project includes the following Docker containers:
 - Mounted to the WordPress volume, bound to /home/nel-mous/data/wp to persist website data.
 - Exposes port 9000 for interaction with the Nginx server.
 Environment variables are loaded from the .env file.
+
+## Volumes
+The project uses two volumes to ensure data persistence:
+
+- wordpress:
+  Stores the WordPress website files. Mounted to /home/nel-mous/data/wp on the host system to preserve website content across container restarts.
+
+- database:
+  Stores the MariaDB database files. Mounted to /home/nel-mous/data/db on the host system for persistent database storage.
+
+## Networks
+The services communicate through a custom bridge network called inception:
+
+- All containers are attached to this bridge network, allowing them to interact securely and efficiently with each other.
